@@ -3,7 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from './Home';
 import Comparison from './Comparison';
-
+//Vra oor Logo
+//Hoof komponent wat die navigasie en routing hanteer tussen die Home en Comparison bladsye.
 function App() {
   return (
     <BrowserRouter>

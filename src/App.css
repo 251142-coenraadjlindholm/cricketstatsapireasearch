@@ -1,3 +1,5 @@
+
+
 :root {
   --bg: #061b12;
   --panel: #02261a;
@@ -15,7 +17,7 @@ body {
   margin: 0;
   background: radial-gradient(circle at 20% 10%, #0d3f2b 0%, #04150e 60%, #020b08 100%);
   color: var(--text);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 .app-shell {
@@ -110,12 +112,11 @@ body {
 
 .hero-overlay {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
   max-width: 500px;
   background: rgba(2, 27, 14, 0.85);
-  backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 255, 136, 0.3);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;

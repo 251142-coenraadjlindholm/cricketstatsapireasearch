@@ -1,5 +1,5 @@
 import React from 'react';
-
+//Home page with a welcome message and a hero card with an image and description of the app Yeah boi
 function Home() {
   return (
     <section className="home-page">
@@ -12,6 +12,8 @@ function Home() {
         </p>
       </div>
 
+      {/* Hero card with an image and description of the app YEBoi */}
+    
       <div className="hero-card" role="img" aria-label="Cricket bat and ball on grass">
         <div className="hero-overlay">
           <h2>Cricket Stats Dashboard</h2>

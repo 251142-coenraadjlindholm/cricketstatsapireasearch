@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Comparison.css';
-
+//API keys for RapidAPI Cricbuzz endpoints Yeboi
 const RAPIDAPI_KEY = '0d125b03b2msh63978c0b24b8a01p1a5f47jsnb33b4e2e589c';
 const RAPIDAPI_HOST = 'cricbuzz-cricket.p.rapidapi.com';
 
@@ -12,6 +12,7 @@ function Comparison() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  //Search for Player by Name and returning die identifikasienommer
   async function searchPlayers(playerName) {
     const options = {
       method: 'GET',
@@ -20,7 +21,7 @@ function Comparison() {
         'X-RapidAPI-Host': RAPIDAPI_HOST
       }
     };
-
+    
     try {
       const response = await fetch(`https://cricbuzz-cricket.p.rapidapi.com/player/v1/search/${playerName}`, options);
       const data = await response.json();
@@ -34,7 +35,8 @@ function Comparison() {
       return null;
     }
   }
-
+//Soek vir die speler se stats deur die id
+//Vra oor die API wat nie werk
   async function getPlayerStats(playerId) {
     const options = {
       method: 'GET',
@@ -53,10 +55,10 @@ function Comparison() {
       return null;
     }
   }
-
+//Hanteer die vergelyking van die twee spelers wanneer die vorm ingedien word
   async function handleCompare(event) {
     event.preventDefault();
-
+//Valideer dat beide spelers se name ingevoer is 
     if (!firstPlayer || !secondPlayer) {
       setError('Please enter two player names to compare.');
       return;
@@ -95,6 +97,7 @@ function Comparison() {
     setLoading(false);
   }
 
+  //Basic Ui for Comparison page Yooooohhhhhh
   return (
     <section className="comparison-page">
       <h1>Player Comparison</h1>
@@ -127,7 +130,7 @@ function Comparison() {
       </form>
 
       {error && <p className="error-message">{error}</p>}
-
+{/* Display the comparison results if both players' data is available IDK */}
       {player1Data && player2Data && (
         <div className="comparison-results">
           <div className="player-cards">
