@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+:root {
+  --bg: #061b12;
+  --panel: #02261a;
+  --accent: #00ff88;
+  --text: #d8ffe9;
+  --muted: #9acfb4;
+  --card-border: #0b3d2a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 20% 10%, #0d3f2b 0%, #04150e 60%, #020b08 100%);
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
+.app-shell {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(255, 255, 255);
+  padding: 0 1rem;
+  background-color: #032116;
+  border-bottom: 1px solid #0f4b34;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links {
+  display: flex;
+  gap: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.95rem 0;
+}
+
+.nav-links a:hover {
+  color: #63ffb7;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #c5f7de;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.page-frame {
+  width: min(1120px, calc(100vw - 3rem));
+  margin: 1rem auto 0;
+}
+
+.home-page {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.homeContent {
+  background: linear-gradient(130deg, rgba(0, 255, 136, 0.08) 0%, rgba(2, 38, 26, 0.75) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.homeContent .eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.homeContent h1 {
+  margin: 0.35rem 0 0.5rem;
+}
+
+.homeContent p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.hero-card {
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  min-height: 430px;
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.48) 100%),
+    url("https://images.unsplash.com/photo-1593766827228-8737b4534aa6?auto=format&fit=crop&w=1600&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding-bottom: 0.55rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .brand-logo {
+    justify-content: flex-start;
+  }
+
+  .page-frame {
+    width: calc(100vw - 1.25rem);
+  }
+
+  .hero-card {
+    min-height: 280px;
   }
 }
+
+
+
+

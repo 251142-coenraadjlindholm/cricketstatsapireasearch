@@ -1,0 +1,74 @@
+.comparison-page {
+    background: linear-gradient(160deg, rgba(0, 255, 136, 0.06) 0%, rgba(2, 38, 26, 0.72) 100%);
+    border: 1px solid #0b3d2a;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.comparison-page h1 {
+    margin: 0;
+    color: #00ff88;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.comparison-page p {
+    margin: 0.45rem 0 1rem;
+    color: #95c9ad;
+}
+
+.comparison-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 0.75rem;
+    align-items: end;
+    background: rgba(2, 26, 18, 0.88);
+    border: 1px solid #0f4b34;
+    border-radius: 8px;
+    padding: 0.9rem;
+}
+
+.comparison-form label {
+    display: grid;
+    gap: 0.35rem;
+    color: #96c9ad;
+    font-size: 0.82rem;
+}
+
+.comparison-form input {
+    border: 1px solid #10543a;
+    border-radius: 4px;
+    background: #02140d;
+    color: #e9fff3;
+    padding: 0.58rem 0.7rem;
+    outline: none;
+}
+
+.comparison-form input:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.15);
+}
+
+.comparison-form button {
+    border: none;
+    border-radius: 4px;
+    padding: 0.62rem 1.2rem;
+    background: #00ff88;
+    color: #032116;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.comparison-form button:hover {
+    background: #63ffb7;
+}
+
+.status-message {
+    margin: 0.8rem 0 0;
+    color: #c7ffe4;
+}
+
+@media (max-width: 900px) {
+    .comparison-form {
+        grid-template-columns: 1fr;
+    }
+}
