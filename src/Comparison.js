@@ -45,7 +45,7 @@ function Comparison() {
         'X-RapidAPI-Host': RAPIDAPI_HOST
       }
     };
-
+//API call om stats te kry, en error handling as die API call verkeerd gaan YEBoi
     try {
       const response = await fetch(`https://cricbuzz-cricket.p.rapidapi.com/player/v1/stats/${playerId}`, options);
       const data = await response.json();
@@ -68,7 +68,8 @@ function Comparison() {
     setError('');
     setPlayer1Data(null);
     setPlayer2Data(null);
-
+    //Search for both players and fetch their stats. 
+    //Handle errors if players are not found or if the API call fails YEBoi
     try {
       const p1 = await searchPlayers(firstPlayer.trim());
       const p2 = await searchPlayers(secondPlayer.trim());
@@ -84,7 +85,7 @@ function Comparison() {
         setLoading(false);
         return;
       }
-
+      // Fetch stats for both players using their IDs Yes YES YESSSS
       const stats1 = await getPlayerStats(p1.id);
       const stats2 = await getPlayerStats(p2.id);
 

@@ -57,7 +57,6 @@
     color: #032116;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
 }
 
 .comparison-form button:hover:not(:disabled) {
