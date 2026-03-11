@@ -56,19 +56,89 @@
     color: #032116;
     font-weight: 600;
     cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-.comparison-form button:hover {
+.comparison-form button:hover:not(:disabled) {
     background: #63ffb7;
 }
 
-.status-message {
+.comparison-form button:disabled {
+    background: #4a7a5f;
+    cursor: not-allowed;
+}
+
+.error-message {
     margin: 0.8rem 0 0;
-    color: #c7ffe4;
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.comparison-results {
+    margin-top: 1.5rem;
+}
+
+.player-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.player-card {
+    background: rgba(2, 26, 18, 0.88);
+    border: 1px solid #0f4b34;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.player-card h3 {
+    margin: 0;
+    color: #00ff88;
+    font-size: 1.1rem;
+}
+
+.player-card.player-2 h3 {
+    color: #ff6384;
+}
+
+.player-role {
+    margin: 0.25rem 0 0.75rem;
+    color: #95c9ad;
+    font-size: 0.85rem;
+}
+
+.player-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #d8ffe9;
+}
+
+.player-stats span {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.player-card.player-2 .player-stats span {
+    background: rgba(255, 99, 132, 0.1);
+    border-color: rgba(255, 99, 132, 0.2);
 }
 
 @media (max-width: 900px) {
     .comparison-form {
         grid-template-columns: 1fr;
     }
+
+    .player-cards {
+        grid-template-columns: 1fr;
+    }
 }
+
