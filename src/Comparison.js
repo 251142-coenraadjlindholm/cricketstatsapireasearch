@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Comparison.css';
+import axios from 'axios';
 //API keys for RapidAPI Cricbuzz endpoints Yeboi
 const RAPIDAPI_KEY = '0d125b03b2msh63978c0b24b8a01p1a5f47jsnb33b4e2e589c';
 const RAPIDAPI_HOST = 'cricbuzz-cricket.p.rapidapi.com';
