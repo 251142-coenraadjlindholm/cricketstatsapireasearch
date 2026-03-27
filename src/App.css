@@ -79,6 +79,7 @@ body {
   padding: 1rem 1.25rem;
 }
 
+/* 1em is equal to the computed font-size of the element's parent */
 .homeContent .eyebrow {
   margin: 0;
   font-size: 0.75rem;
@@ -136,6 +137,7 @@ body {
   line-height: 1.5;
 }
 
+/*fr is a flexible length unit that only works in grid layouts. Really picky eish*/
 @media (max-width: 760px) {
   .navbar {
     grid-template-columns: 1fr;
@@ -147,8 +149,9 @@ body {
     justify-content: flex-start;
   }
 
+  /*1vw equals 1 % of the vieewport width. Quite interesting yoho*/
   .page-frame {
-    width: calc(100vw - 1.25rem);
+    width: calc(100vw - 1.25rem); 
   }
 
   .hero-card {
