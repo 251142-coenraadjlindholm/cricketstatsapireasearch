@@ -1,5 +1,3 @@
-
-
 :root {
   --bg: #061b12;
   --panel: #02261a;
@@ -17,11 +15,13 @@ body {
   margin: 0;
   background: radial-gradient(circle at 20% 10%, #0d3f2b 0%, #04150e 60%, #020b08 100%);
   color: var(--text);
-
+  padding-bottom: 0; /* For footer */
 }
 
 .app-shell {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -65,6 +65,7 @@ body {
 .page-frame {
   width: min(1120px, calc(100vw - 3rem));
   margin: 1rem auto 0;
+  flex: 1;
 }
 
 .home-page {
@@ -79,7 +80,6 @@ body {
   padding: 1rem 1.25rem;
 }
 
-/* 1em is equal to the computed font-size of the element's parent */
 .homeContent .eyebrow {
   margin: 0;
   font-size: 0.75rem;
@@ -137,7 +137,59 @@ body {
   line-height: 1.5;
 }
 
-/*fr is a flexible length unit that only works in grid layouts. Really picky eish*/
+/* Footer Styles   */
+.footer {
+  margin-top: auto;
+  background: #032116;
+  border-top: 1px solid #0f4b34;
+  padding: 1.5rem 1rem;
+}
+
+.footer-content {
+  max-width: min(1120px, calc(100vw - 3rem));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-logo {
+  height: 28px;
+  width: auto;
+}
+
+.footer-name {
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.Student-Name {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.footer-info p {
+  margin: 0;
+}
+
 @media (max-width: 760px) {
   .navbar {
     grid-template-columns: 1fr;
@@ -149,7 +201,6 @@ body {
     justify-content: flex-start;
   }
 
-  /*1vw equals 1 % of the vieewport width. Quite interesting yoho*/
   .page-frame {
     width: calc(100vw - 1.25rem); 
   }
@@ -172,5 +223,14 @@ body {
   .hero-overlay p {
     font-size: 0.85rem;
   }
-}
 
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    width: calc(100vw - 2.5rem);
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+}

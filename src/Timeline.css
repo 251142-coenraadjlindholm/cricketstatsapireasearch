@@ -1,0 +1,154 @@
+/* Timeline page styles */
+
+.timeline-page {
+  background: linear-gradient(160deg, rgba(0, 255, 136, 0.06) 0%, rgba(2, 38, 26, 0.72) 100%);
+  border: 1px solid #0b3d2a;
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline-page h1 {
+  margin: 0 0 0.5rem;
+  color: #00ff88;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.timeline-page p {
+  margin: 0 0 1.5rem;
+  color: #95c9ad;
+  font-size: 1rem;
+}
+/* Styles for the search form and results on the timeline page YEBoi */
+.search-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: end;
+  background: rgba(2, 26, 18, 0.88);
+  border: 1px solid #0f4b34;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 600px;
+}
+
+.search-form label {
+  display: grid;
+  gap: 0.4rem;
+  color: #96c9ad;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.search-form input {
+  border: 1px solid #10543a;
+  border-radius: 6px;
+  background: #02140d;
+  color: #e9fff3;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.search-form input:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+  outline: none;
+}
+
+.search-form button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  background: #00ff88;
+  color: #032116;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.search-form button:hover:not(:disabled) {
+  background: #63ffb7;
+}
+
+.search-form button:disabled {
+  background: #4a7a5f;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin: 1rem 0;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.12);
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 6px;
+}
+
+.timeline-results {
+  margin-top: 2rem;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(2, 26, 18, 0.88);
+  border: 1px solid #0f4b34;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.player-info h3 {
+  margin: 0;
+  color: #00ff88;
+  font-size: 1.4rem;
+}
+
+.property-select {
+  background: #02140d;
+  color: #e9fff3;
+  border: 1px solid #10543a;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.property-select:focus {
+  border-color: #00ff88;
+  outline: none;
+}
+
+.chart-container {
+  background: rgba(2, 38, 26, 0.5);
+  border: 1px solid #0f4b34;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.chart-container canvas {
+  max-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .timeline-page {
+    padding: 1rem;
+  }
+
+  .search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .player-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+

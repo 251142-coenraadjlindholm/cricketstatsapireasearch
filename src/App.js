@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from './Home';
 import Comparison from './Comparison';
+import Timeline from './Timeline';
+import Footer from './Footer';
 //Vra oor Logo
 //Hoof komponent wat die navigasie en routing hanteer tussen die Home en Comparison bladsye.
 function App() {
@@ -13,6 +15,7 @@ function App() {
           <nav className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/comparison">Comparison</Link>
+            <Link to="/timeline">Timeline</Link>
           </nav>
         </header>
 
@@ -20,8 +23,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/comparison" element={<Comparison />} />
+            <Route path="/timeline" element={<Timeline />} />
           </Routes>
         </main>
+        
+        <Footer />
       </div>
     </BrowserRouter>
   );

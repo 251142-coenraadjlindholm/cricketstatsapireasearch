@@ -1,0 +1,24 @@
+import React from 'react';
+import './App.css'; // Reuse app styles
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        <div className="footer-brand">
+          <img src="/logo.svg" alt="Cricket Hub Logo" className="footer-logo" />
+          <span className="footer-name">Cricket Hub</span>
+        </div>
+        
+        <div className="footer-info">
+          <p>Built by <span className="Student-Name">[Coenraad Lindholm 251142]</span></p>
+          <p>Powered by Cricbuzz API</p>
+          <p>&copy; 2024 Cricket Stats Dashboard. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;
+
