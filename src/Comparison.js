@@ -243,7 +243,7 @@ async function searchPlayers(playerName) {
       setPlayer1Data(stats1);
       setPlayer2Data(stats2);
     } catch (err) {
-      setError('Failed to fetch player data. Please try again.');
+      setError('Failed to fetch player data. Please try again.'); // General error message for any unexpected issues during the fetch process
     }
 
     setLoading(false);
