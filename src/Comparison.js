@@ -17,7 +17,7 @@ import './Comparison.css';
 import axios from 'axios';
 //API keys for RapidAPI Cricbuzz endpoints Yeboi
 const RAPIDAPI_HOST = 'cricbuzz-cricket.p.rapidapi.com';
-
+//Check for RapidAPI key in environment variables and log an error if it's missing YEBoi
 if (!process.env.REACT_APP_RAPIDAPI_KEY) {
   console.error('Missing REACT_APP_RAPIDAPI_KEY in .env file');
 }
@@ -42,7 +42,7 @@ function Comparison() {
   const [player2Data, setPlayer2Data] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+//Helper function to safely extract nested stats from the API response, returning 0 if any path is missing Yayyy
   const getStat = (data, path) => {
     try {
       return path.split('.').reduce((obj, key) => obj?.[key], data) || 0;

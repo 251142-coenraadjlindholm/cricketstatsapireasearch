@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './App.css'; // Reuse app styles
-
+//put a margin bottom so it looks better for the eye.
 function Footer() {
   return (
     <footer className="footer">
