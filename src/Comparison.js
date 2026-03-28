@@ -50,7 +50,8 @@ function Comparison() {
       return 0;
     }
   };
-
+// 'n Funksie om die stats van die spelers te trek and handle 
+// cases where certain stats may be missing by checking multiple possible paths YEBoi
   const extractCareerStats = (data) => {
     const values = data?.values || [];
     return {
@@ -233,7 +234,7 @@ async function searchPlayers(playerName) {
       const stats1 = await getPlayerStats(p1.id) || p1;
       const stats2 = await getPlayerStats(p2.id) || p2;
 
-      // DEBUG: Log data structure to console to diagnose N/A
+      // DEBUG: Log data structure to console to diagnose N/A issues Yaaayyy
       console.log('Player 1 full data:', stats1);
       console.log('Player 2 full data:', stats2);
       console.log('Player 1 has batting.bat?', !!stats1.batting?.bat);

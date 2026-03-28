@@ -20,7 +20,7 @@ function Footer() {
         <div className="footer-info">
           <p>Built by <span className="Student-Name">[Coenraad Lindholm 251142]</span></p>
           <p>Powered by Cricbuzz API</p>
-          <p>&copy; 2024 Cricket Stats Dashboard. All rights reserved.</p>
+          <p>&copy; 2026 Cricket Stats Dashboard. All rights reserved.</p>
         </div>
       </div>
     </footer>
