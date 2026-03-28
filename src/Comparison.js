@@ -50,16 +50,39 @@ function Comparison() {
       return 0;
     }
   };
-//Extract stats for both players, handling cases where certain stats may be missing by checking multiple possible paths YEBoi
-  const p1Matches = getStat(player1Data, 'batting.bat.matNr') || getStat(player1Data, 'recentBatting.rows[0].values[0]');
-  const p1Runs = getStat(player1Data, 'batting.bat.runs') || getStat(player1Data, 'recentBatting.rows[0].values[1]');
-  const p1SR = getStat(player1Data, 'batting.bat.sr') || getStat(player1Data, 'recentBatting.rows[0].values[3]');
-  const p1Centuries = getStat(player1Data, 'batting.bat._100') || 0;
 
-  const p2Matches = getStat(player2Data, 'batting.bat.matNr') || getStat(player2Data, 'recentBatting.rows[0].values[0]');
-  const p2Runs = getStat(player2Data, 'batting.bat.runs') || getStat(player2Data, 'recentBatting.rows[0].values[1]');
-  const p2SR = getStat(player2Data, 'batting.bat.sr') || getStat(player2Data, 'recentBatting.rows[0].values[3]');
-  const p2Centuries = getStat(player2Data, 'batting.bat._100') || 0;
+  const extractCareerStats = (data) => {
+    const values = data?.values || [];
+    return {
+      matches: parseInt(values[0]?.values[1] || 0),
+      runs: parseInt(values[2]?.values[1] || 0),
+      average: parseFloat(values[5]?.values[1] || 0),
+      strikeRate: parseFloat(values[6]?.values[1] || 0),
+      fours: parseInt(values[8]?.values[1] || 0),
+      sixes: parseInt(values[9]?.values[1] || 0),
+      fifties: parseInt(values[11]?.values[1] || 0),
+      centuries: parseInt(values[12]?.values[1] || 0),
+      highest: parseInt(values[4]?.values[1] || 0),
+    };
+  };
+//Extract stats for both players, handling cases where certain stats may be missing by checking multiple possible paths YEBoi
+  const p1Career = extractCareerStats(player1Data);
+  const p2Career = extractCareerStats(player2Data);
+  const p1Matches = p1Career.matches;
+  const p1Runs = p1Career.runs;
+  const p1SR = p1Career.strikeRate;
+  const p1Centuries = p1Career.centuries;
+  const p1Fifties = p1Career.fifties;
+  const p1Sixes = p1Career.sixes;
+  const p1Fours = p1Career.fours;
+
+  const p2Matches = p2Career.matches;
+  const p2Runs = p2Career.runs;
+  const p2SR = p2Career.strikeRate;
+  const p2Centuries = p2Career.centuries;
+  const p2Fifties = p2Career.fifties;
+  const p2Sixes = p2Career.sixes;
+  const p2Fours = p2Career.fours;
 //Prepare data for the charts, using the extracted stats AYE AYE  
   const barData = {
     labels: ['Matches', 'Runs'],
@@ -86,18 +109,18 @@ function Comparison() {
   };
 
   const radarData = {
-    labels: ['Matches', 'Runs', 'SR', '100s'],
+    labels: ['Matches', 'Runs', 'SR', '100s', '50s', 'Sixes'],
     datasets: [
       {
         label: player1Data?.name || 'P1',
-        data: [p1Matches, p1Runs, p1SR, p1Centuries],
+        data: [p1Matches, p1Runs, p1SR, p1Centuries, p1Fifties, p1Sixes],
         backgroundColor: 'rgba(0, 255, 136, 0.2)',
         borderColor: 'rgba(0, 255, 136, 1)',
         borderWidth: 2,
       },
       {
         label: player2Data?.name || 'P2',
-        data: [p2Matches, p2Runs, p2SR, p2Centuries],
+        data: [p2Matches, p2Runs, p2SR, p2Centuries, p2Fifties, p2Sixes],
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 2,
@@ -150,18 +173,12 @@ async function searchPlayers(playerName) {
   }
 //Soek vir die speler se stats deur die id (COOOL) YEBoi
   async function getPlayerStats(playerId) {
-    const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
-    if (!apiKey) {
-      console.error('RapidAPI key not configured');
-      return null;
-    }
 
     const options = {
       method: 'GET',
-      url: `https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/${playerId}`,
-params: { type: 'batting' },
+      url: `https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/${playerId}/batting`,
       headers: {
-        'x-rapidapi-key': apiKey,
+        'x-rapidapi-key': '0d125b03b2msh63978c0b24b8a01p1a5f47jsnb33b4e2e589c',
         'x-rapidapi-host': RAPIDAPI_HOST,
         'Content-Type': 'application/json'
       }
@@ -272,12 +289,12 @@ params: { type: 'batting' },
 <p className="player-role">{player1Data.role || 'Batsman'}</p>
 
               <div className="player-stats">
-
-
-<span>Matches: {player1Data.batting?.bat?.matNr || player1Data.batting?.matNr || player1Data.recentBatting?.rows[0]?.values[0] || 'N/A'}</span>
-                <span>Runs: {player1Data.batting?.bat?.runs || player1Data.batting?.runs || player1Data.recentBatting?.rows[0]?.values[1] || 'N/A'}</span>
-                <span>Strike Rate: {player1Data.batting?.bat?.sr || player1Data.batting?.sr || player1Data.recentBatting?.rows[0]?.values[3] || 'N/A'}</span>
-                <span>Centuries: {player1Data.batting?.bat?.hundreds || player1Data.batting?.hundreds || player1Data.recentBatting?.rows[0]?.values[4] || 'N/A'}</span>
+                <span>Matches: {p1Career.matches || 'N/A'}</span>
+                <span>Runs: {p1Career.runs || 'N/A'}</span>
+                <span>Strike Rate: {p1Career.strikeRate || 'N/A'}</span>
+                <span>Centuries: {p1Career.centuries || 'N/A'}</span>
+                <span>Fifties: {p1Career.fifties || 'N/A'}</span>
+                <span>Sixes: {p1Career.sixes || 'N/A'}</span>
               </div>
 
             </div>
@@ -286,13 +303,12 @@ params: { type: 'batting' },
               <h3>{player2Data.name}</h3>
 <p className="player-role">{player2Data.role || 'Batsman'}</p>
               <div className="player-stats">
-
-{/* Handles the N/a pronbleem by checking multiple possible paths for the stats and falling back to 'N/A' if none are found YEBoi */}
-<span>Matches: {player2Data.batting?.bat?.matNr || player2Data.batting?.matNr || player2Data.recentBatting?.rows[0]?.values[0] || 'N/A'}</span>
-                <span>Runs: {player2Data.batting?.bat?.runs || player2Data.batting?.runs || player2Data.recentBatting?.rows[0]?.values[1] || 'N/A'}</span>
-                <span>Strike Rate: {player2Data.batting?.bat?.sr || player2Data.batting?.sr || player2Data.recentBatting?.rows[0]?.values[3] || 'N/A'}</span>
-                <span>Centuries: {player2Data.batting?.bat?.hundreds || player2Data.batting?.bat?.hundreds || player2Data.recentBatting?.rows[0]?.values[4] || 'N/A'}</span>
-
+                <span>Matches: {p2Career.matches || 'N/A'}</span>
+                <span>Runs: {p2Career.runs || 'N/A'}</span>
+                <span>Strike Rate: {p2Career.strikeRate || 'N/A'}</span>
+                <span>Centuries: {p2Career.centuries || 'N/A'}</span>
+                <span>Fifties: {p2Career.fifties || 'N/A'}</span>
+                <span>Sixes: {p2Career.sixes || 'N/A'}</span>
               </div>
             </div>
           </div>

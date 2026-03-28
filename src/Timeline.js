@@ -52,6 +52,21 @@ function Timeline() {
     }
   };
 
+  const extractCareerStats = (data) => {
+    const values = data?.values || [];
+    return {
+      matches: parseInt(values[0]?.values[1] || 0),
+      runs: parseInt(values[2]?.values[1] || 0),
+      average: parseFloat(values[5]?.values[1] || 0),
+      strikeRate: parseFloat(values[6]?.values[1] || 0),
+      fours: parseInt(values[8]?.values[1] || 0),
+      sixes: parseInt(values[9]?.values[1] || 0),
+      fifties: parseInt(values[11]?.values[1] || 0),
+      centuries: parseInt(values[12]?.values[1] || 0),
+      highest: parseInt(values[4]?.values[1] || 0),
+    };
+  };
+
   async function searchPlayers(playerName) {
     const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
     if (!apiKey) {
@@ -84,16 +99,14 @@ function Timeline() {
   }
 
   async function getPlayerStats(playerId) {
-    const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
-    if (!apiKey) return null;
 
     const options = {
       method: 'GET',
-      url: `https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/${playerId}`,
-      params: { type: 'batting' },
+      url: `https://cricbuzz-cricket.p.rapidapi.com/stats/v1/player/${playerId}/batting`,
       headers: {
-        'x-rapidapi-key': apiKey,
+        'x-rapidapi-key': '0d125b03b2msh63978c0b24b8a01p1a5f47jsnb33b4e2e589c',
         'x-rapidapi-host': RAPIDAPI_HOST,
+        'Content-Type': 'application/json'
       }
     };
     
@@ -137,16 +150,17 @@ function Timeline() {
   // Mock timeline data based on career totals (distributed over years)
   const generateTimelineData = (stats) => {
     const years = Array.from({ length: 20 }, (_, i) => 2004 + i); // 2004-2023
+    const careerStats = extractCareerStats(stats);
     const statMap = {
-      runs: getStat(stats, 'batting.bat.runs') || 0,
-      matches: getStat(stats, 'batting.bat.matNr') || 0,
-      strikeRate: getStat(stats, 'batting.bat.sr') || 0,
-      centuries: getStat(stats, 'batting.bat._100') || 0,
-      fifties: getStat(stats, 'batting.bat._50') || 0,
-      average: getStat(stats, 'batting.bat.avg') || 0,
-      sixes: getStat(stats, 'batting.bat.sixes') || 0,
-      fours: getStat(stats, 'batting.bat.fours') || 0,
-      highest: getStat(stats, 'batting.bat.high') || 0,
+      runs: careerStats.runs,
+      matches: careerStats.matches,
+      strikeRate: careerStats.strikeRate,
+      centuries: careerStats.centuries,
+      fifties: careerStats.fifties,
+      average: careerStats.average,
+      sixes: careerStats.sixes,
+      fours: careerStats.fours,
+      highest: careerStats.highest,
     };
 
     const total = statMap[selectedProperty];
