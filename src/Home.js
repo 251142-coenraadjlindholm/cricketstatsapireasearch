@@ -14,8 +14,8 @@ function Home() {
 
       {/* Hero card with an image and description of the app YEBoi */}
     
-      <div className="hero-card" role="img" aria-label="Cricket bat and ball on grass">
-        <div className="hero-overlay">
+      <div className="super-hero-card" role="img" aria-label="Cricket bat and ball on grass">
+        <div className="super-hero-overlay">
           <h2>Cricket Stats Dashboard</h2>
           <p>
             Dive into the world of cricket analytics with our comprehensive player comparison tool. 

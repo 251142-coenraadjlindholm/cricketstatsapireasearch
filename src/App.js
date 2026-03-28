@@ -17,6 +17,9 @@ function App() {
             <Link to="/comparison">Comparison</Link>
             <Link to="/timeline">Timeline</Link>
           </nav>
+          <div className="navbar-center">
+            <img src="/CricketLogo.png" alt="Cricket Logo" className="navbar-logo" />
+          </div>
         </header>
 
         <main className="page-frame">
