@@ -15,7 +15,7 @@ body {
   margin: 0;
   background: radial-gradient(circle at 20% 10%, #0d3f2b 0%, #04150e 60%, #020b08 100%);
   color: var(--text);
-  padding-bottom: 0; /* For footer */
+  padding-bottom: 2rem; /* Space before footer */
 }
 
 .app-shell {
@@ -76,7 +76,7 @@ body {
 
 .page-frame {
   width: min(1120px, calc(100vw - 3rem));
-  margin: 1rem auto 0;
+  margin: 1rem auto 3rem;
   flex: 1;
 }
 
